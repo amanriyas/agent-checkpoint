@@ -51,7 +51,8 @@ function addEvent(ev) {
   div.className = `ev ${ev.kind}`;
   if (ev.kind === "say") div.textContent = ev.text;
   else if (ev.kind === "ran") {
-    const by = { you: "approved by you", contract: "ran without asking (read-only)", dont_ask_again: "auto-approved: you said don't ask again" }[ev.approved_by];
+    const by = { you: "approved by you", dont_ask_again: "auto-approved: you said don't ask again",
+      contract: ev.class === "run:tests" ? "ran without asking (test run)" : "ran without asking (read-only)" }[ev.approved_by];
     div.innerHTML = `<span class="cmd">${esc(ev.action)}</span><span class="by ${ev.approved_by === "dont_ask_again" ? "auto" : ""}">${esc(by)}</span><span class="res">${esc(ev.result)}</span>`;
   } else if (ev.kind === "denied") div.textContent = ev.action;
   t.appendChild(div);
@@ -96,7 +97,7 @@ function cardHTML(a) {
   // an irreversible class should never be waved through (Lecture 12).
   const canAlways = c.reversibility === "undoable" && c.risk !== "high";
   return `<div class="cc">
-    <div class="kicker">The agent wants to</div>
+    <div class="kicker">If you approve, this</div>
     <h2>${esc(c.effects[0])}</h2>
     <div class="badges">
       <span class="badge b-${esc(c.risk)}">Risk: ${esc(c.risk)}</span>

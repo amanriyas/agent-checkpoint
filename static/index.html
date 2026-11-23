@@ -49,7 +49,9 @@
   <section id="view-results" class="view hidden">
     <h1>Results</h1>
     <p class="lead">Signal-detection scores of every approval decision in the log. A <b>hit</b> is a harmful action refused; a <b>miss</b> is a harmful action approved (by hand or by "don't ask again").
-      <b>d′</b> is how well harmful and safe actions were told apart; <b>c</b> above 0 means leaning towards approving.</p>    <div id="results-body"></div>
+      <b>d′</b> is how well harmful and safe actions were told apart; <b>c</b> above 0 means leaning towards approving.</p>
+    <p class="hint">These figures summarise whatever sessions are in this machine's log. They are not study results: with a handful of decisions, d′ and c are illustrations of the measure, not evidence. Scores use a log-linear correction, so d′ is not exactly 0 even when nothing is refused.</p>
+    <div id="results-body"></div>
     <p><a href="/api/export.csv" download="decisions.csv">Download decision log (CSV)</a></p>
   </section>
 </main>
