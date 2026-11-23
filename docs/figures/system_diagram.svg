@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 1030" width="1240" height="1030" font-family="Inter, sans-serif">
+<defs><marker id="minfo" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#52606d"/></marker><marker id="mcontrol" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#c0392b"/></marker><marker id="mai" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7a3e9d"/></marker></defs>
+<rect width="1240" height="1030" fill="#ffffff"/>
+<text x="20" y="34" font-size="22" font-weight="700" fill="#1f2933">Agent Checkpoint: components and flows</text>
+<rect x="20" y="60" width="340" height="560" rx="10" fill="#f8fafc" stroke="#d9e2ec"/>
+<text x="34" y="84" font-size="12.5" font-weight="700" letter-spacing="1" fill="#52606d">AGENT: PROPOSES</text>
+<rect x="410" y="60" width="400" height="810" rx="10" fill="#f8fafc" stroke="#d9e2ec"/>
+<text x="424" y="84" font-size="12.5" font-weight="700" letter-spacing="1" fill="#52606d">CHECKPOINT SERVER (FastAPI): DISPOSES</text>
+<rect x="860" y="60" width="360" height="810" rx="10" fill="#f8fafc" stroke="#d9e2ec"/>
+<text x="874" y="84" font-size="12.5" font-weight="700" letter-spacing="1" fill="#52606d">PARTICIPANT&#x27;S BROWSER (HTML/JS)</text>
+<rect x="20" y="890" width="1200" height="120" rx="10" fill="#f8fafc" stroke="#d9e2ec"/>
+<text x="34" y="914" font-size="12.5" font-weight="700" letter-spacing="1" fill="#52606d">PLANNED, NOT BUILT</text>
+<path d="M340,158.0 L385,158.0" fill="none" stroke="#52606d" stroke-width="2"/>
+<path d="M340,430.0 L385,430.0" fill="none" stroke="#52606d" stroke-width="2"/>
+<path d="M340,550.0 L385,550.0" fill="none" stroke="#52606d" stroke-width="2"/>
+<path d="M385,550 L385,150" fill="none" stroke="#52606d" stroke-width="2"/>
+<path d="M385,150 L430,150" fill="none" stroke="#52606d" stroke-width="2" marker-end="url(#minfo)"/>
+<text x="398" y="350" font-size="12" fill="#52606d" text-anchor="middle" font-weight="600" transform="rotate(90 398 350)">proposed action, one at a time</text>
+<path d="M190,346 L190,390" fill="none" stroke="#7a3e9d" stroke-width="2" marker-end="url(#mai)"/>
+<text x="200" y="374" font-size="12" fill="#7a3e9d" text-anchor="start" font-weight="600">JSON proposal</text>
+<path d="M610,190 L610,230" fill="none" stroke="#52606d" stroke-width="2" marker-end="url(#minfo)"/>
+<path d="M790,262 L1040,262 L1040,190" fill="none" stroke="#52606d" stroke-width="2" marker-end="url(#minfo)"/>
+<text x="880" y="254" font-size="12" fill="#52606d" text-anchor="start" font-weight="600">auto-run: shown, not asked</text>
+<path d="M610,326 L610,366" fill="none" stroke="#c0392b" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#mcontrol)"/>
+<text x="620" y="352" font-size="12" fill="#c0392b" text-anchor="start" font-weight="600">needs approval</text>
+<path d="M610,446 L610,486" fill="none" stroke="#52606d" stroke-width="2" marker-end="url(#minfo)"/>
+<path d="M790,526 L880,526" fill="none" stroke="#52606d" stroke-width="2" marker-end="url(#minfo)"/>
+<path d="M1040,566 L1040,620" fill="none" stroke="#52606d" stroke-width="2" marker-end="url(#minfo)"/>
+<path d="M880,660 L790,660" fill="none" stroke="#c0392b" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#mcontrol)"/>
+<text x="835" y="652" font-size="12" fill="#c0392b" text-anchor="middle" font-weight="600">decision</text>
+<path d="M515,700 L515,750" fill="none" stroke="#52606d" stroke-width="2" marker-end="url(#minfo)"/>
+<path d="M705,700 L705,750" fill="none" stroke="#52606d" stroke-width="2" marker-end="url(#minfo)"/>
+<path d="M790,798 L880,798" fill="none" stroke="#52606d" stroke-width="2" marker-end="url(#minfo)"/>
+<path d="M515,846 L515,862 L1125,862 L1125,846" fill="none" stroke="#52606d" stroke-width="2" marker-end="url(#minfo)"/>
+<rect x="40" y="110" width="300" height="96" rx="8" fill="#fffaf0" stroke="#b7791f" stroke-width="2" stroke-dasharray="8 5"/>
+<text x="54" y="132" font-size="10.5" font-weight="700" letter-spacing=".8" fill="#b7791f">SIMULATED</text>
+<text x="54" y="154" font-size="16" font-weight="700" fill="#1f2933">Scripted task files</text>
+<text x="54" y="174" font-size="13" fill="#52606d">3 tasks, 30 approval points,</text>
+<text x="54" y="191" font-size="13" fill="#52606d">9 seeded harmful actions</text>
+<rect x="40" y="250" width="300" height="96" rx="8" fill="#f7f0fb" stroke="#7a3e9d" stroke-width="2.5" stroke-dasharray="0"/>
+<text x="54" y="272" font-size="10.5" font-weight="700" letter-spacing=".8" fill="#7a3e9d">IMPLEMENTED · AI</text>
+<text x="54" y="294" font-size="16" font-weight="700" fill="#1f2933">Live LLM (Groq / OpenAI)</text>
+<text x="54" y="314" font-size="13" fill="#52606d">proposes one action as JSON;</text>
+<text x="54" y="331" font-size="13" fill="#52606d">never executes (dry run)</text>
+<rect x="40" y="390" width="300" height="80" rx="8" fill="#ffffff" stroke="#073e67" stroke-width="2" stroke-dasharray="0"/>
+<text x="54" y="412" font-size="10.5" font-weight="700" letter-spacing=".8" fill="#073e67">IMPLEMENTED</text>
+<text x="54" y="434" font-size="16" font-weight="700" fill="#1f2933">Schema check</text>
+<text x="54" y="454" font-size="13" fill="#52606d">bad JSON or tool: session stops</text>
+<rect x="40" y="510" width="300" height="80" rx="8" fill="#ffffff" stroke="#073e67" stroke-width="2" stroke-dasharray="0"/>
+<text x="54" y="532" font-size="10.5" font-weight="700" letter-spacing=".8" fill="#073e67">IMPLEMENTED</text>
+<text x="54" y="554" font-size="16" font-weight="700" fill="#1f2933">Seeded harmful actions</text>
+<text x="54" y="574" font-size="13" fill="#52606d">mixed into live runs for ground truth</text>
+<rect x="430" y="110" width="360" height="80" rx="8" fill="#ffffff" stroke="#073e67" stroke-width="2" stroke-dasharray="0"/>
+<text x="444" y="132" font-size="10.5" font-weight="700" letter-spacing=".8" fill="#073e67">IMPLEMENTED</text>
+<text x="444" y="154" font-size="16" font-weight="700" fill="#1f2933">Session engine</text>
+<text x="444" y="174" font-size="13" fill="#52606d">one proposed step at a time</text>
+<rect x="430" y="230" width="360" height="96" rx="8" fill="#ffffff" stroke="#073e67" stroke-width="2" stroke-dasharray="0"/>
+<text x="444" y="252" font-size="10.5" font-weight="700" letter-spacing=".8" fill="#073e67">IMPLEMENTED</text>
+<text x="444" y="274" font-size="16" font-weight="700" fill="#1f2933">Contract gate</text>
+<text x="444" y="294" font-size="13" fill="#52606d">reads + test runs: run, then report</text>
+<text x="444" y="311" font-size="13" fill="#52606d">&#x27;don&#x27;t ask again&#x27; classes: auto-approve</text>
+<rect x="430" y="366" width="360" height="80" rx="8" fill="#ffffff" stroke="#073e67" stroke-width="2" stroke-dasharray="0"/>
+<text x="444" y="388" font-size="10.5" font-weight="700" letter-spacing=".8" fill="#073e67">IMPLEMENTED</text>
+<text x="444" y="410" font-size="16" font-weight="700" fill="#1f2933">Consequence analyser</text>
+<text x="444" y="430" font-size="13" fill="#52606d">fixed rules, not AI; &#x27;unknown&#x27; if no rule</text>
+<rect x="430" y="486" width="360" height="80" rx="8" fill="#ffffff" stroke="#073e67" stroke-width="2" stroke-dasharray="0"/>
+<text x="444" y="508" font-size="10.5" font-weight="700" letter-spacing=".8" fill="#073e67">IMPLEMENTED</text>
+<text x="444" y="530" font-size="16" font-weight="700" fill="#1f2933">Prompt builder</text>
+<text x="444" y="550" font-size="13" fill="#52606d">raw: command only  |  card: + consequences</text>
+<rect x="430" y="620" width="360" height="80" rx="8" fill="#ffffff" stroke="#073e67" stroke-width="2" stroke-dasharray="0"/>
+<text x="444" y="642" font-size="10.5" font-weight="700" letter-spacing=".8" fill="#073e67">IMPLEMENTED</text>
+<text x="444" y="664" font-size="16" font-weight="700" fill="#1f2933">Decision log (JSON Lines)</text>
+<text x="444" y="684" font-size="13" fill="#52606d">action, label, decision, time, auto?</text>
+<rect x="430" y="750" width="170" height="96" rx="8" fill="#ffffff" stroke="#073e67" stroke-width="2" stroke-dasharray="0"/>
+<text x="444" y="772" font-size="10.5" font-weight="700" letter-spacing=".8" fill="#073e67">IMPLEMENTED</text>
+<text x="444" y="794" font-size="16" font-weight="700" fill="#1f2933">Scoring</text>
+<text x="444" y="814" font-size="13" fill="#52606d">hits, false alarms,</text>
+<text x="444" y="831" font-size="13" fill="#52606d">d′, c, per block</text>
+<rect x="620" y="750" width="170" height="96" rx="8" fill="#ffffff" stroke="#073e67" stroke-width="2" stroke-dasharray="0"/>
+<text x="634" y="772" font-size="10.5" font-weight="700" letter-spacing=".8" fill="#073e67">IMPLEMENTED</text>
+<text x="634" y="794" font-size="16" font-weight="700" fill="#1f2933">Report builder</text>
+<text x="634" y="814" font-size="13" fill="#52606d">agent claim vs</text>
+<text x="634" y="831" font-size="13" fill="#52606d">log + return values</text>
+<rect x="880" y="110" width="320" height="80" rx="8" fill="#ffffff" stroke="#073e67" stroke-width="2" stroke-dasharray="0"/>
+<text x="894" y="132" font-size="10.5" font-weight="700" letter-spacing=".8" fill="#073e67">IMPLEMENTED</text>
+<text x="894" y="154" font-size="16" font-weight="700" fill="#1f2933">Transcript</text>
+<text x="894" y="174" font-size="13" fill="#52606d">what ran, and who approved it</text>
+<rect x="880" y="486" width="320" height="80" rx="8" fill="#ffffff" stroke="#073e67" stroke-width="2" stroke-dasharray="0"/>
+<text x="894" y="508" font-size="10.5" font-weight="700" letter-spacing=".8" fill="#073e67">IMPLEMENTED</text>
+<text x="894" y="530" font-size="16" font-weight="700" fill="#1f2933">Approval prompt</text>
+<text x="894" y="550" font-size="13" fill="#52606d">Approve / Refuse / Don&#x27;t ask again</text>
+<rect x="880" y="620" width="320" height="80" rx="8" fill="#e8f0f7" stroke="#073e67" stroke-width="2" stroke-dasharray="0"/>
+<text x="894" y="642" font-size="10.5" font-weight="700" letter-spacing=".8" fill="#073e67">HUMAN</text>
+<text x="894" y="664" font-size="16" font-weight="700" fill="#1f2933">Participant</text>
+<text x="894" y="684" font-size="13" fill="#52606d">reads, decides (time logged)</text>
+<rect x="880" y="750" width="150" height="96" rx="8" fill="#ffffff" stroke="#073e67" stroke-width="2" stroke-dasharray="0"/>
+<text x="894" y="772" font-size="10.5" font-weight="700" letter-spacing=".8" fill="#073e67">IMPLEMENTED</text>
+<text x="894" y="794" font-size="16" font-weight="700" fill="#1f2933">After-run report</text>
+<text x="894" y="814" font-size="13" fill="#52606d">Done, Refused,</text>
+<text x="894" y="831" font-size="13" fill="#52606d">Assumed, Can&#x27;t undo</text>
+<rect x="1050" y="750" width="150" height="96" rx="8" fill="#ffffff" stroke="#073e67" stroke-width="2" stroke-dasharray="0"/>
+<text x="1064" y="772" font-size="10.5" font-weight="700" letter-spacing=".8" fill="#073e67">IMPLEMENTED</text>
+<text x="1064" y="794" font-size="16" font-weight="700" fill="#1f2933">Results page</text>
+<text x="1064" y="814" font-size="13" fill="#52606d">by condition,</text>
+<text x="1064" y="831" font-size="13" fill="#52606d">by block, CSV</text>
+<rect x="40" y="920" width="360" height="70" rx="8" fill="#f5f7fa" stroke="#9aa5b1" stroke-width="2" stroke-dasharray="3 4"/>
+<text x="54" y="948" font-size="11" font-weight="700" letter-spacing=".8" fill="#7b8794">PLANNED</text>
+<text x="54" y="970" font-size="15" font-weight="600" fill="#52606d">Sandbox that really runs approved actions</text>
+<rect x="430" y="920" width="360" height="70" rx="8" fill="#f5f7fa" stroke="#9aa5b1" stroke-width="2" stroke-dasharray="3 4"/>
+<text x="444" y="948" font-size="11" font-weight="700" letter-spacing=".8" fill="#7b8794">PLANNED</text>
+<text x="444" y="970" font-size="15" font-weight="600" fill="#52606d">Multi-day sessions, same participants</text>
+<rect x="840" y="920" width="360" height="70" rx="8" fill="#f5f7fa" stroke="#9aa5b1" stroke-width="2" stroke-dasharray="3 4"/>
+<text x="854" y="948" font-size="11" font-weight="700" letter-spacing=".8" fill="#7b8794">PLANNED</text>
+<text x="854" y="970" font-size="15" font-weight="600" fill="#52606d">Varied card designs against habituation</text>
+<path d="M790,640 L822,640 L822,140 L790,140" fill="none" stroke="#c0392b" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#mcontrol)"/>
+<text x="834" y="420" font-size="12" fill="#c0392b" font-weight="600" transform="rotate(90 834 420)" text-anchor="middle">approved: scripted result, agent continues · refused: skipped</text>
+<rect x="40" y="650" width="300" height="190" rx="8" fill="#ffffff" stroke="#d9e2ec"/>
+<text x="54" y="674" font-size="12.5" font-weight="700" letter-spacing="1" fill="#52606d">KEY</text>
+<rect x="54" y="686" width="28" height="16" rx="3" fill="#fff" stroke="#073e67" stroke-width="2" stroke-dasharray="0"/>
+<text x="94" y="698" font-size="13" fill="#1f2933">Implemented</text>
+<rect x="54" y="710" width="28" height="16" rx="3" fill="#fff" stroke="#b7791f" stroke-width="2" stroke-dasharray="8 5"/>
+<text x="94" y="722" font-size="13" fill="#1f2933">Simulated (scripted agent)</text>
+<rect x="54" y="734" width="28" height="16" rx="3" fill="#fff" stroke="#7a3e9d" stroke-width="2" stroke-dasharray="0"/>
+<text x="94" y="746" font-size="13" fill="#1f2933">AI component (only proposes)</text>
+<rect x="54" y="758" width="28" height="16" rx="3" fill="#fff" stroke="#9aa5b1" stroke-width="2" stroke-dasharray="3 4"/>
+<text x="94" y="770" font-size="13" fill="#1f2933">Planned</text>
+<line x1="54" y1="790" x2="82" y2="790" stroke="#52606d" stroke-width="2" stroke-dasharray="0"/>
+<text x="94" y="794" font-size="13" fill="#1f2933">Information flow</text>
+<line x1="54" y1="814" x2="82" y2="814" stroke="#c0392b" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="94" y="818" font-size="13" fill="#1f2933">Control: the person's decision</text>
+</svg>

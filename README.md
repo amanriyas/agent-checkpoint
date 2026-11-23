@@ -57,7 +57,8 @@ Where to look:
 - `app/sessions.py`: interaction contracts (which actions run without asking), the session loop and the after-run report.
 - `app/metrics.py`: signal-detection scoring.
 - `data/decisions.jsonl`: created on first use; one line per decision. Also downloadable as CSV from the Results page.
-- `docs/screenshots/`: the screenshots used in the report's storyboards.
+- `docs/screenshots/`: screenshots from a scripted browser walkthrough.
+- `docs/figures/`: the report's system diagram and storyboards. `tools/` holds the scripts that made them (Playwright).
 
 ## Development record
 
@@ -88,4 +89,4 @@ Grouped by stage. "Origin" says whose idea each decision was: **Aman** (mine), *
 
 ## Additional files
 
-None. Everything is in this repository. The report is submitted separately and links here.
+None outside this repository. The report is submitted separately and links here.
