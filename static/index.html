@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agent Checkpoint</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand">Agent Checkpoint <span class="tag">research prototype</span></div>
+  <nav>
+    <button class="link" data-view="start">New session</button>
+    <button class="link" data-view="results">Results</button>
+  </nav>
+</header>
+
+<main>
+  <!-- START -->
+  <section id="view-start" class="view">
+    <h1>Supervise a coding agent</h1>
+    <p class="lead">A simulated coding agent works on a task in a repository called <code>shop-api</code>.
+      Reading files and running tests happen without asking. Everything else stops for your approval.
+      Some proposed actions are harmful. Approve what you would approve at work; refuse the rest.</p>
+    <form id="start-form" class="card form">
+      <label>Participant ID <input name="participant" value="P01" required></label>
+      <fieldset>
+        <legend>Approval prompt</legend>
+        <label class="radio"><input type="radio" name="condition" value="raw" checked> Raw command (like today's coding agents)</label>
+        <label class="radio"><input type="radio" name="condition" value="card"> Consequence card</label>
+      </fieldset>
+      <label>Task <select name="scenario" id="scenario-select"></select></label>
+      <p class="hint" id="live-hint"></p>
+      <button class="primary" type="submit">Start session</button>
+    </form>
+    <p class="hint">Scripted tasks are simulated: nothing is executed. Harmful actions are seeded and labelled in the log, so each decision can be scored.</p>
+  </section>
+
+  <!-- SESSION -->
+  <section id="view-session" class="view hidden">
+    <div class="task-bar"><span class="muted">Task</span> <span id="task-text"></span>
+      <span class="pill" id="cond-pill"></span></div>
+    <div id="transcript" class="transcript" aria-live="polite"></div>
+    <div id="prompt" class="prompt hidden" role="dialog" aria-label="Approval needed"></div>
+    <div id="report" class="report hidden"></div>
+  </section>
+
+  <!-- RESULTS -->
+  <section id="view-results" class="view hidden">
+    <h1>Results</h1>
+    <p class="lead">Signal-detection scores of every approval decision in the log. A <b>hit</b> is a harmful action refused; a <b>miss</b> is a harmful action approved (by hand or by "don't ask again").
+      <b>d′</b> is how well harmful and safe actions were told apart; <b>c</b> above 0 means leaning towards approving.</p>    <div id="results-body"></div>
+    <p><a href="/api/export.csv" download="decisions.csv">Download decision log (CSV)</a></p>
+  </section>
+</main>
+<script src="/static/app.js"></script>
+</body>
+</html>
