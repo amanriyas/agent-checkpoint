@@ -15,7 +15,7 @@ README prose word count: **about 1,100** (code, commands and tables of file name
 | Three scripted tasks with 30 approval points, 9 seeded harmful actions | **Implemented; the agent is simulated** (scripted steps, nothing executes) |
 | Decision log (JSON Lines, CSV export) and signal-detection scoring (hit rate, false alarms, d′, c, per-block trend) | **Implemented** |
 | After-run report built from the log, shown beside the agent's own claim | **Implemented** |
-| Live mode: a real model proposes actions (dry run, schema-validated, harmful actions seeded in) | **Implemented, partly tested**: tested with a fake model in unit tests; see the development record for the live check |
+| Live mode: a real model proposes actions (dry run, schema-validated, harmful actions seeded in) | **Implemented, partly tested**: unit tests with a fake model; run against Groq `openai/gpt-oss-120b` on 24 Nov 2026. Sessions often end early because the model makes a malformed call, which the validator rejects |
 | Multi-day sessions with the same people, varied card designs (Vance et al., 2018), real sandbox execution | **Planned** |
 
 Nothing in this prototype runs a real command. "Results" shown in the transcript come from the scenario files (scripted mode) or are `[dry run]` placeholders (live mode).
@@ -25,8 +25,8 @@ Nothing in this prototype runs a real command. "Results" shown in the transcript
 - **Python 3.11+, FastAPI, Uvicorn**: the API, session engine and static file server.
 - **Plain HTML, CSS and JavaScript**: the interface. No build step, so a reviewer can run it with one command.
 - **Rule-based analyser** (`app/analyser.py`): deliberately not a language model, so the card never shows a generated claim.
-- **pytest**: 13 tests covering the analyser (including its known blind spots), the scoring and full sessions.
-- **Optional live model**: any OpenAI-compatible endpoint. Groq (`llama-3.3-70b-versatile`) by default, OpenAI (`gpt-4o-mini`) as a fallback; override with `LIVE_MODEL`.
+- **pytest**: 16 tests covering the analyser (including its known blind spots), the scoring and full sessions.
+- **Optional live model**: any OpenAI-compatible endpoint. Groq (`openai/gpt-oss-120b`) by default, OpenAI (`gpt-4o-mini`) as a fallback; override with `LIVE_MODEL`.
 - **AI tool used to build it**: Claude (Anthropic); see [AI assistance](#ai-assistance).
 - Undecided: whether a future version should let the analyser call a model for unrecognised commands, with its output marked as a claim.
 
@@ -71,7 +71,7 @@ Grouped by stage. "Origin" says whose idea each decision was: **Aman** (mine), *
 5. **"Don't ask again"** (origin: AI). The raw prompt offers it for every class, as real tools do. The card offers it only for low-risk actions that can be undone. Approvals granted this way are logged as `auto` and count as misses when harmful.
 6. **After-run report from the log** (`Engine.report`; origin: AI, following Lectures 12–13). Each scenario ends with the agent claiming success. The report sets that claim beside what the log shows: done, refused, assumed and cannot-undo.
 7. **Scoring** (`app/metrics.py`; origin: Aman's A1 question, implemented by AI). Hits, misses, false alarms, d′ and c with a log-linear correction, overall and in blocks of 8 decisions per participant.
-8. **Live mode** (`app/live_agent.py`; origin: Aman asked for it, implemented by AI). Model output must parse as a fixed JSON schema or the session stops (Lecture 09). Two known-harmful actions are mixed in so live sessions still have ground truth; model actions are logged as unlabelled. Not yet run against a real API: the build workspace could not reach model providers.
+8. **Live mode** (`app/live_agent.py`; origin: Aman asked for it, implemented by AI). Model output must parse as a fixed JSON schema or the session stops (Lecture 09). Two known-harmful actions are mixed in so live sessions still have ground truth; model actions are logged as unlabelled. Groq retired `llama-3.3-70b-versatile` on 16 Aug 2026, so the default is now `openai/gpt-oss-120b`. It proposes actions as native tool calls, because in JSON mode it kept trying to call tools and failing. Provider errors are shown in the session.
 9. **Fixes after the first browser walkthrough** (origin: AI). The card heading read "The agent wants to / Uploads…", now "If you approve, this". Test runs were labelled "read-only", now "test run". The Results page now states its numbers are not study results.
 
 > **Aman to complete before submission** (in your own words, with commit links):
@@ -84,7 +84,7 @@ Grouped by stage. "Origin" says whose idea each decision was: **Aman** (mine), *
 - **Tool:** Claude (Anthropic), in a chat-based coding workspace.
 - **Asked for:** a prototype of the design from my Assignment 1 literature review; the analyser, session engine, scoring and interface; tests; a first draft of this README; screenshots for the report.
 - **Authorship in the history:** commits written by the assistant are authored as "Claude (AI assistant)". Commits under my name are my own changes.
-- **Checks run so far:** 13 automated tests; a scripted browser walkthrough of all three tasks in both conditions, whose screenshots are in `docs/screenshots/`.
+- **Checks run so far:** 16 automated tests; a scripted browser walkthrough of all three tasks in both conditions, whose screenshots are in `docs/screenshots/`.
 - > **Aman to complete:** one or two concrete examples of a suggestion you rejected or changed, and what you checked by hand (for example, reading each seeded action's label against the card it produces).
 
 ## Additional files

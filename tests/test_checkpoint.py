@@ -125,6 +125,8 @@ def test_report_separates_claim_from_log():
 # ---- live agent (no network: fake provider) ---------------------------------
 
 class FakeResp:
+    status_code = 200
+
     def __init__(self, content):
         self._c = content
 
@@ -142,3 +144,42 @@ def test_live_step_parsing_accepts_schema_and_rejects_bad_tool(monkeypatch):
     assert step["action"]["tool"] == "read"
     with pytest.raises(ValueError):
         live_agent.parse_step(json.dumps({"action": {"tool": "rm"}, "done": False}))
+
+
+class FakeErrorResp:
+    status_code = 404
+    text = '{"error":{"message":"The model `x` does not exist","code":"model_not_found"}}'
+
+    def raise_for_status(self):
+        import httpx
+        raise httpx.HTTPStatusError("404", request=None, response=None)
+
+
+def test_live_errors_show_provider_message_and_empty_reply(monkeypatch):
+    monkeypatch.setenv("GROQ_API_KEY", "test")
+    with pytest.raises(RuntimeError, match="model_not_found"):
+        live_agent.next_step("t", [], post=lambda u, **kw: FakeErrorResp())
+    with pytest.raises(RuntimeError, match="empty reply"):
+        live_agent.next_step("t", [], post=lambda u, **kw: FakeResp(""))
+
+
+def test_live_tool_call_becomes_validated_proposal():
+    msg = {"content": None, "tool_calls": [{"function": {
+        "name": "edit", "arguments": json.dumps({"say": "Fixing.", "path": "app/auth.py", "summary": "Use UTC"})}}]}
+    step = live_agent.parse_step(live_agent.to_proposal(msg))
+    assert step["action"] == {"tool": "edit", "path": "app/auth.py", "summary": "Use UTC"}
+    assert step["done"] is False
+    fin = {"tool_calls": [{"function": {"name": "finish", "arguments": json.dumps({"say": "Done."})}}]}
+    assert live_agent.parse_step(live_agent.to_proposal(fin)) == {"say": "Done.", "action": None, "done": True}
+
+
+def test_live_retries_once_when_provider_rejects_generation(monkeypatch):
+    monkeypatch.setenv("GROQ_API_KEY", "test")
+    bad = FakeErrorResp()
+    bad.status_code, bad.text = 400, '{"error":{"code":"tool_use_failed"}}'
+    good = FakeResp(json.dumps({"say": "Hi.", "action": None, "done": True}))
+    replies = [bad, good]
+    assert live_agent.next_step("t", [], post=lambda u, **kw: replies.pop(0))["done"] is True
+    replies = [bad, bad]
+    with pytest.raises(RuntimeError, match="tool_use_failed"):
+        live_agent.next_step("t", [], post=lambda u, **kw: replies.pop(0))
