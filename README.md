@@ -3,7 +3,7 @@
 A research prototype for studying how people supervise a coding agent through approval prompts. It compares a raw command prompt, like today's coding agents use, with a consequence card that states what an action changes, whether it can be undone and whether you would notice. Every decision is scored against seeded harmful actions.
 
 Module: Intelligent Interactive Systems, Assignment 2 (Project Report). Author: Aman Abdul Salam.
-README prose word count: **about 1,100** (code, commands and tables of file names not counted).
+README prose word count: **about 1,250** (code, commands and tables of file names not counted).
 
 ## Project status
 
@@ -82,7 +82,7 @@ Where to look:
 Grouped by stage. "Origin" says whose idea each decision was: **Aman** (mine), **AI** (proposed by the assistant), or **AI → Aman** (proposed by the assistant, then checked or changed by me).
 
 1. **Scope from Assignment 1** (origin: Aman). The literature review ended with a question: does detection at approval checkpoints decline with use, and is that a looser criterion or lost sensitivity? The build is the smallest system that can measure this: two prompt designs, seeded harmful actions with ground truth, and scoring. Real execution and multi-day studies are planned, not built.
-2. **Rules, not a model, behind the card** (`app/analyser.py`; origin: AI). A model-written card would be one more fluent claim that can be wrong (Lecture 08). The analyser is a fixed rule table that says "unknown" when no rule matches. Unit tests pin down two blind spots: a typo-squatted package and an auth-bypass edit both get a low or medium card.
+2. **Rules, not a model, behind the card** (`app/analyser.py`; origin: AI → Aman, changed in item 10). A model-written card would be one more fluent claim that can be wrong (Lecture 08). The analyser is a fixed rule table that says "unknown" when no rule matches. Unit tests pin down two blind spots: a typo-squatted package and an auth-bypass edit both get a low or medium card.
 3. **Scenarios that do not make the card an oracle** (`app/scenarios/`; origin: AI). Some harmful actions look routine on the card (auth edit, typo-squat). Some safe actions look alarming (deleting `build/`, pushing a release to `main`, uploading to the internal artefact store). The comparison is then about reading the card, not about following a red label.
 4. **Fewer prompts by contract** (`AUTO_CLASSES` in `app/sessions.py`; origin: AI). Reads and test runs run without asking and are reported in the transcript (Lecture 13, contract 4). Prompting for them would only add the volume that leads to reflex approval.
 5. **"Don't ask again"** (origin: AI). The raw prompt offers it for every class, as real tools do. The card offers it only for low-risk actions that can be undone. Approvals granted this way are logged as `auto` and count as misses when harmful.
@@ -91,18 +91,19 @@ Grouped by stage. "Origin" says whose idea each decision was: **Aman** (mine), *
 8. **Live mode** (`app/live_agent.py`; origin: Aman asked for it, implemented by AI). Model output must parse as a fixed JSON schema or the session stops (Lecture 09). Two known-harmful actions are mixed in so live sessions still have ground truth; model actions are logged as unlabelled. Groq retired `llama-3.3-70b-versatile` on 16 Aug 2026, so the default is now `openai/gpt-oss-120b`. It proposes actions as native tool calls, because in JSON mode it kept trying to call tools and failing. Provider errors are shown in the session.
 9. **Fixes after the first browser walkthrough** (origin: AI). The card heading read "The agent wants to / Uploads…", now "If you approve, this". Test runs were labelled "read-only", now "test run". The Results page now states its numbers are not study results.
 
-> **Aman to complete before submission** (in your own words, with commit links):
-> - Which of the AI-originated decisions above you reviewed, kept or changed, and why. Update each "origin" accordingly.
-> - What you changed after trying it yourself.
-> - The live-mode check with your own Groq key: did it run, and what did the model propose?
+10. **The agent's description is a claim, not analysis** ([c573239](https://github.com/amanriyas/agent-checkpoint/commit/c573239); origin: Aman). The card listed the agent's own edit summary, such as "Simplify verify_token", among its effects. That made the agent's words look like the checkpoint's analysis, which is the fluent-claim problem the card is meant to avoid. I moved it to a separate line labelled "its claim, not checked", shown only on the card. The assistant then added a test for it ([fef3cea](https://github.com/amanriyas/agent-checkpoint/commit/fef3cea)).
+11. **Live mode against a real API** ([32b1dde](https://github.com/amanriyas/agent-checkpoint/commit/32b1dde); origin: AI). Groq had retired the original model, so live sessions ended at once with a 404. The assistant ran the check through the API with my Groq key. `openai/gpt-oss-120b` proposed real steps, mostly `ls -R` and reading files, and the seeded harmful actions (CI edit, force push, secrets upload) reached the card as intended. Every session still ended early on a malformed model call, which the validator rejected.
+12. **Setup steps fixed for Windows** ([5ace61a](https://github.com/amanriyas/agent-checkpoint/commit/5ace61a); origin: AI). The old steps failed in PowerShell, and `set GROQ_API_KEY=...` silently left live mode off.
+13. **Screenshots and storyboards refreshed** ([a84a852](https://github.com/amanriyas/agent-checkpoint/commit/a84a852); origin: AI). They now show the card from item 10.
 
 ## AI assistance
 
 - **Tool:** Claude (Anthropic), in a chat-based coding workspace.
 - **Asked for:** a prototype of the design from my Assignment 1 literature review; the analyser, session engine, scoring and interface; tests; a first draft of this README; screenshots for the report.
-- **Authorship in the history:** commits written by the assistant are authored as "Claude (AI assistant)". Commits under my name are my own changes.
+- **Authorship in the history:** early commits written by the assistant are authored as "Claude (AI assistant)". c573239 is my own change. The later commits 32b1dde, fef3cea, 5ace61a and a84a852 are under my name because I ran them, but their content was written by the assistant; their messages lack a `Co-Authored-By` line, so this list is the record.
 - **Checks run so far:** 17 automated tests; a scripted browser walkthrough of all three tasks in both conditions, whose screenshots are in `docs/screenshots/`.
-- > **Aman to complete:** one or two concrete examples of a suggestion you rejected or changed, and what you checked by hand (for example, reading each seeded action's label against the card it produces).
+- **Changed:** the card design (item 10, [c573239](https://github.com/amanriyas/agent-checkpoint/commit/c573239)). The assistant's version mixed the agent's own words into the analysis; I separated them. That commit is mine.
+- **Checked by me:** I used the app myself in the browser. I made every commit from c573239 on myself; for each one containing the assistant's work, the assistant showed me the diff first and the tests passed.
 
 ## Additional files
 
