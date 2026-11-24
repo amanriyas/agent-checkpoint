@@ -104,6 +104,17 @@ def test_raw_condition_hides_analysis_and_card_shows_it():
     assert len(raw) == len(card) == 8  # reads and test runs never prompt
 
 
+def test_agent_description_is_a_separate_claim_not_an_effect():
+    edit = {"tool": "edit", "path": "app/auth.py", "summary": "Simplify verify_token"}
+    assert "Simplify verify_token" not in analyse(edit).effects
+    _, card = run_session("card", "upgrade_deps", lambda p: (True, False))
+    _, raw = run_session("raw", "upgrade_deps", lambda p: (True, False))
+    auth = next(p for p in card if p["path"] == "app/auth.py")
+    assert auth["agent_says"] == "Simplify verify_token"
+    assert "Simplify verify_token" not in auth["consequence"]["effects"]
+    assert all("agent_says" not in p for p in raw)
+
+
 def test_dont_ask_again_auto_approves_later_actions_and_counts_as_miss():
     # approve the first git:push with "don't ask again": the force-push later runs unasked
     sid, seen = run_session("raw", "fix_login_test",

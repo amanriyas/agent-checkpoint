@@ -25,7 +25,7 @@ Nothing in this prototype runs a real command. "Results" shown in the transcript
 - **Python 3.11+, FastAPI, Uvicorn**: the API, session engine and static file server.
 - **Plain HTML, CSS and JavaScript**: the interface. No build step, so a reviewer can run it with one command.
 - **Rule-based analyser** (`app/analyser.py`): deliberately not a language model, so the card never shows a generated claim.
-- **pytest**: 16 tests covering the analyser (including its known blind spots), the scoring and full sessions.
+- **pytest**: 17 tests covering the analyser (including its known blind spots), the scoring and full sessions.
 - **Optional live model**: any OpenAI-compatible endpoint. Groq (`openai/gpt-oss-120b`) by default, OpenAI (`gpt-4o-mini`) as a fallback; override with `LIVE_MODEL`.
 - **AI tool used to build it**: Claude (Anthropic); see [AI assistance](#ai-assistance).
 - Undecided: whether a future version should let the analyser call a model for unrecognised commands, with its output marked as a claim.
@@ -84,7 +84,7 @@ Grouped by stage. "Origin" says whose idea each decision was: **Aman** (mine), *
 - **Tool:** Claude (Anthropic), in a chat-based coding workspace.
 - **Asked for:** a prototype of the design from my Assignment 1 literature review; the analyser, session engine, scoring and interface; tests; a first draft of this README; screenshots for the report.
 - **Authorship in the history:** commits written by the assistant are authored as "Claude (AI assistant)". Commits under my name are my own changes.
-- **Checks run so far:** 16 automated tests; a scripted browser walkthrough of all three tasks in both conditions, whose screenshots are in `docs/screenshots/`.
+- **Checks run so far:** 17 automated tests; a scripted browser walkthrough of all three tasks in both conditions, whose screenshots are in `docs/screenshots/`.
 - > **Aman to complete:** one or two concrete examples of a suggestion you rejected or changed, and what you checked by hand (for example, reading each seeded action's label against the card it produces).
 
 ## Additional files
