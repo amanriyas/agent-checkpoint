@@ -108,6 +108,7 @@ function cardHTML(a) {
     <div><b>Changes:</b> ${esc(c.object)}</div>
     ${c.effects.length > 1 ? `<ul>${c.effects.slice(1).map((e) => `<li>${esc(e)}</li>`).join("")}</ul>` : ""}
     ${c.warnings.length ? `<ul class="warns">${c.warnings.map((w) => `<li>${esc(w)}</li>`).join("")}</ul>` : ""}
+    ${a.agent_says ? `<div class="undo"><b>The agent describes this as:</b> "${esc(a.agent_says)}" (its claim, not checked)</div>` : ""}
     <div class="undo"><b>To undo:</b> ${esc(c.undo_hint)}</div>
     <div class="exact">Exact ${a.tool === "bash" ? "command" : "change"}<code>${esc(a.tool === "bash" ? a.command : a.label)}</code></div>
     ${diffHTML(a.diff)}

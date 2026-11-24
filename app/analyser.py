@@ -88,8 +88,7 @@ def analyse(action: dict, known_packages: set[str] | None = None) -> Consequence
                 risk = "high"
         return Consequence(
             object=f"file {path}",
-            effects=[f"{'Overwrites' if tool == 'write' else 'Edits'} {path}"] + (
-                [action["summary"]] if action.get("summary") else []),
+            effects=[f"{'Overwrites' if tool == 'write' else 'Edits'} {path}"],
             reversibility="undoable",
             undo_hint="Revert with git checkout -- " + path,
             noticeable=cls == "edit:source",

@@ -231,6 +231,7 @@ class Engine:
         if s.condition == "card":
             # Only the card condition sees the analyser's output.
             view["consequence"] = cons
+            view["agent_says"] = step.get("summary")
         return view
 
     def report(self, s: Session) -> dict:
