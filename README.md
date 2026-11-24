@@ -32,23 +32,40 @@ Nothing in this prototype runs a real command. "Results" shown in the transcript
 
 ## Running or inspecting the work
 
-```bash
-git clone https://github.com/<your-username>/agent-checkpoint.git
+Windows PowerShell:
+
+```powershell
+git clone https://github.com/amanriyas/agent-checkpoint.git
 cd agent-checkpoint
-python -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\activate
+python -m venv .venv
+.venv\Scripts\Activate.ps1
 pip install -r requirements.txt
 uvicorn app.main:app --reload
 # open http://127.0.0.1:8000
 ```
 
-Run the tests: `python -m pytest -q`
+If PowerShell blocks `Activate.ps1`, run `Set-ExecutionPolicy -Scope Process Bypass` first. It only lasts for that window.
 
-Optional live mode, using your own key (never commit it):
+macOS or Linux:
 
 ```bash
-export GROQ_API_KEY=...        # or OPENAI_API_KEY=...   (Windows: set GROQ_API_KEY=...)
+git clone https://github.com/amanriyas/agent-checkpoint.git
+cd agent-checkpoint
+python3 -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+uvicorn app.main:app --reload
+```
+
+Run the tests: `python -m pytest -q`
+
+Optional live mode, using your own key (never commit it). Set it in the same window, then start the server:
+
+```powershell
+$env:GROQ_API_KEY = "..."      # or $env:OPENAI_API_KEY = "..."
 uvicorn app.main:app
 ```
+
+On macOS or Linux use `export GROQ_API_KEY=...` instead. The start page offers a live task only when a key is set.
 
 Where to look:
 
