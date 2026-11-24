@@ -101,10 +101,10 @@ Grouped by stage. "Origin" says whose idea each decision was: **Aman** (mine), *
 
 - **Tool:** Claude (Anthropic), in a chat-based coding workspace.
 - **Asked for:** a prototype of the design from my Assignment 1 literature review; the analyser, session engine, scoring and interface; tests; a first draft of this README; screenshots for the report.
-- **Authorship in the history:** early commits written by the assistant are authored as "Claude (AI assistant)". c573239 I applied by hand after the assistant flagged the problem (item 10). The later commits 32b1dde, fef3cea, 5ace61a and a84a852 are under my name because I ran them, but their content was written by the assistant; their messages lack a `Co-Authored-By` line, so this list is the record.
+- **Authorship in the history:** early commits written by the assistant are authored as "Claude (AI assistant)". c573239 I applied by hand after the assistant flagged the problem (item 10). The later commits 32b1dde, fef3cea, 5ace61a and a84a852 are under my name because I ran them, but their content or code was written by the assistant as per my instructions and feedback.
 - **Checks run so far:** 17 automated tests; a scripted browser walkthrough of all three tasks in both conditions, whose screenshots are in `docs/screenshots/`.
 - **Changed or decided by me:** I ran live mode myself on its first real run, found it failing with a 404 and reported it, which is how the retired Groq model was found (item 11). I applied and checked the card change in item 10 after the assistant flagged the problem.
-- **Checked by me:** I've used the app myself in the browser. I made every commit from c573239 on myself; for each one containing the assistant's work, the assistant showed me the diff first and the tests passed.
+- **Checked by me:** I've used the app myself in the browser. I made every commit from c573239  myself; for each one containing the assistant's work, the assistant showed me the diff first and the tests passed.
 
 ## Additional files
 
