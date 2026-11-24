@@ -2,8 +2,8 @@
 import sys
 from playwright.sync_api import sync_playwright
 
-OUT = sys.argv[1] if len(sys.argv) > 1 else "/home/claude/shots"
-URL = "http://127.0.0.1:8000/"
+OUT = sys.argv[1] if len(sys.argv) > 1 else "docs/screenshots"
+URL = "http://127.0.0.1:8001/"
 
 
 def start(page, participant, condition, scenario):
